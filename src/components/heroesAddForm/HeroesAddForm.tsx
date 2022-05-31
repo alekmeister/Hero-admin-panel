@@ -52,7 +52,7 @@ const HeroesAddForm = (): JSX.Element => { //?
         request(`http://localhost:3001/heroes`, 'POST', {'Content-Type': 'application/json'}, JSON.stringify(newHero))
             .then(() => { dispatch(addItem(newHero)); })
         
-    }
+    };
 
   return (
     <form className="border p-4 shadow-lg rounded">
