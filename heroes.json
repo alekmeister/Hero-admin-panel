@@ -1,0 +1,29 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Морской герой",
+      "description": "Как аквамен, но не из DC",
+      "element": "water"
+    },
+    {
+      "id": 2,
+      "name": "Морской герой",
+      "description": "Как аквамен, но не из DC",
+      "element": "water"
+    },
+    {
+      "id": "19b035d2-7558-4cf8-8b43-1737cc4bf329",
+      "name": "thor",
+      "description": "qwe",
+      "element": "wind"
+    }
+  ],
+  "filters": [
+    "all",
+    "fire",
+    "water",
+    "wind",
+    "earth"
+  ]
+}
