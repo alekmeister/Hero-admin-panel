@@ -1,13 +1,12 @@
+import {FC} from "react";
 import HeroesList from '../heroesList/HeroesList';
 import HeroesAddForm from '../heroesAddForm/HeroesAddForm';
 import HeroesFilters from '../heroesFilters/HeroesFilters';
-
 import './app.scss';
 
-const App: React.FC = () => {
-    
-    return (
 
+const App:FC= ()  => {
+    return (
         <main className="app">
             <div className="content">
                 <HeroesList/>

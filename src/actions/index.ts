@@ -24,7 +24,7 @@ export const deleteItem = (id: string) => {
   };
 }
 
-export const addItem = (newHero: {}) => {
+export const addItem = (newHero: object) => {
     return {
         type: 'ADD_CHAR',
         payload: newHero
@@ -32,7 +32,6 @@ export const addItem = (newHero: {}) => {
 }
 
 export const skills = (filtersArr : string) => {
-    console.log(filtersArr)
     return {
       type: 'FILTERS_ARRAY',
       payload: filtersArr

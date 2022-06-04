@@ -34,13 +34,15 @@ const reducer = (state = initialState, action: any) => {
           heroesLoadingStatus: 'error',
         };
       case 'DELETE_CHAR':
+
         return {
           ...state,
           heroes: state.heroes.filter(
             (item : any) => item.id !== action.payload
           ),
         };
-      case 'ADD_CHAR':   
+      case 'ADD_CHAR':
+
         return {
           ...state, 
           heroes: [...state.heroes, action.payload]
