@@ -10,6 +10,7 @@ import {Hero, heroesFetched, heroesFetching, heroesFetchingError} from "./heroes
 // При клике на "крестик" идет удаление персонажа из общего состояния
 // Усложненная задача:
 // Удаление идет и с json файла при помощи метода DELETE
+// rfsdfsdfsdfsdfsdf
 
   const HeroesList = () => {
   const { heroesLoadingStatus } = useAppSelector((state) => state);
