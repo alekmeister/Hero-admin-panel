@@ -1,15 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
-import {setActiveFilter} from '../actions'
+import {useAppDispatch, useAppSelector} from "./typesForHooks";
+import {setActiveFilter} from "../components/heroesList/heroesSlice";
 
 export const useFilteredHeroes = () => {
-  const { heroes, activeFilter }:any = useSelector((state) => state);
-  const dispatch = useDispatch()
-  const handleActiveFilter = (item : any) => {
+  const { heroes, activeFilter } = useAppSelector((state) => state);
+  const dispatch = useAppDispatch()
+  const handleActiveFilter = (item : string) => {
      dispatch(setActiveFilter(item)); 
     };
     
-  const filtered = heroes.filter((hero: any ) => activeFilter === 'all' ? hero : hero.element === activeFilter);
-  console.log('filtered', filtered);
+  const filtered = heroes.filter((hero) => activeFilter === 'all' ? hero : hero.element === activeFilter);
+
 
   return { filtered, handleActiveFilter };
 };

@@ -1,17 +1,13 @@
-import { useDispatch } from 'react-redux';
-import { deleteItem } from '../../actions';
+import { useAppDispatch} from "../../hooks/typesForHooks";
 import { useHttp } from '../../hooks/http.hook';
+import {deleteItem, Hero} from "../heroesList/heroesSlice";
+import React from "react";
 
-interface newHero {
-  id: string,
-  name: string,
-  description: string,
-  element: string
-}
+type Props = Hero
 
-const HeroesListItem = ({ name, description, element, id } : newHero) => {
+const HeroesListItem:React.FC<Props> = ({id,name,description,element}) => {
   const { request } = useHttp()
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const handleDeleteItem = () => {
     request(`http://localhost:3001/heroes/${id}`, 'DELETE')
     .then(() => dispatch(deleteItem(id)))

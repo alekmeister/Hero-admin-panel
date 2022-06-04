@@ -1,22 +1,22 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "Морской герой",
-      "description": "Как аквамен, но не из DC",
-      "element": "water"
+      "id": "1da27bd8-c7fa-4ede-81d9-3dfc434a1336",
+      "name": "q",
+      "description": "q",
+      "element": "all"
     },
     {
-      "id": 2,
-      "name": "Морской герой",
-      "description": "Как аквамен, но не из DC",
-      "element": "water"
+      "id": "7e43f9f0-1c6b-44b1-9f75-1fcd630dc86e",
+      "name": "q",
+      "description": "wqeee",
+      "element": "earth"
     },
     {
-      "id": "19b035d2-7558-4cf8-8b43-1737cc4bf329",
-      "name": "thor",
-      "description": "qwe",
-      "element": "wind"
+      "id": "b95421c2-6d28-4583-9e16-20afd9c7029b",
+      "name": "qwdqwd",
+      "description": "wdqd",
+      "element": "water"
     }
   ],
   "filters": [

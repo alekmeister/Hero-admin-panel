@@ -1,26 +1,22 @@
-import { useHttp } from '../../hooks/http.hook';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  heroesFetching,
-  heroesFetched,
-  heroesFetchingError,
-} from '../../actions';
-import { useFilteredHeroes } from '../../hooks/useFilteredHeroes';
+import {useHttp} from '../../hooks/http.hook';
+import {useEffect} from 'react';
+import {useAppSelector} from "../../hooks/typesForHooks";
+import {useAppDispatch} from "../../hooks/typesForHooks";
+import {useFilteredHeroes} from '../../hooks/useFilteredHeroes';
 import HeroesListItem from '../heroesListItem/HeroesListItem';
 import Spinner from '../spinner/Spinner';
-
+import {Hero, heroesFetched, heroesFetching, heroesFetchingError} from "./heroesSlice";
 // Задача для этого компонента:
 // При клике на "крестик" идет удаление персонажа из общего состояния
 // Усложненная задача:
 // Удаление идет и с json файла при помощи метода DELETE
 
-const HeroesList = () => {
-  const { heroesLoadingStatus } : any = useSelector((state) => state);
+  const HeroesList = () => {
+  const { heroesLoadingStatus } = useAppSelector((state) => state);
   const { filtered } = useFilteredHeroes();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { request } = useHttp();
-  console.log(filtered);
+
 
   useEffect(() => {}, [filtered]);
 
@@ -28,6 +24,7 @@ const HeroesList = () => {
     dispatch(heroesFetching());
     request('http://localhost:3001/heroes')
       .then((data) => dispatch(heroesFetched(data)))
+
       .catch(() => dispatch(heroesFetchingError()));
 
     // eslint-disable-next-line
@@ -39,12 +36,14 @@ const HeroesList = () => {
     return <h5 className="text-center mt-5">Ошибка загрузки</h5>;
   }
 
-  const renderHeroesList = (arr : any)  => {
+  const renderHeroesList = (arr:Hero[])  => {
+
     if (!arr.length) {
       return <h5 className="text-center mt-5">Героев пока нет</h5>;
     }
 
-    return arr.map((props : any) => {
+    return arr.map((props) => {
+
       return <HeroesListItem key={props.id} {...props} />;
     });
   };

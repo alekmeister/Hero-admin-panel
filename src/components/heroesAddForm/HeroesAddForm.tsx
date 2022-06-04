@@ -1,49 +1,42 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect, FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useHttp } from '../../hooks/http.hook';
-import { addItem, skills } from '../../actions';
-import { mappedSkils } from '../../constants'
+import {mappedSkils, Skills} from '../../constants'
+import {useAppDispatch, useAppSelector} from "../../hooks/typesForHooks";
+import {addItem, Hero, skills} from "../heroesList/heroesSlice";
 
-interface newHero {
-    id: string,
-    name: string,
-    description: string,
-    element: string
-}
-
-const HeroesAddForm = (): JSX.Element => { //?
-    const {filters}: any = useSelector(state => state)
+const HeroesAddForm: FC = () => {
+    const {filters} = useAppSelector(state => state)
     const [name, setName] = useState('')
     const [skill, setSkill] = useState('');
     const [oneSkill, setOneSkill] = useState('')
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const { request } = useHttp()
     
 
     const getOptions = async () => {
-        const res = await request('http://localhost:3001/filters/');
+        const res:(keyof Skills)[] = await request('http://localhost:3001/filters/');
         
-        dispatch(skills(res)); 
+        dispatch(skills(res));
     }
      useEffect(() => {
          getOptions(); 
      }, []);
      
    
-    const handleChangeName = (event: any) => {
+    const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
      setName(event.target.value)
     }
-    const handleChangeSkill = (event: any) => {
+    const handleChangeSkill = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
      setSkill(event.target.value)
     }
 
-    const handleChangeOneSkill = (event: any) => {
+    const handleChangeOneSkill = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setOneSkill(event.target.value)
     };
-    const handleSubmitForm = (event: any) => {
+    const handleSubmitForm = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        const newHero: newHero = {
+        const newHero: Hero = {
           id: uuidv4(),
           name: name,
           description: skill,
@@ -101,7 +94,7 @@ const HeroesAddForm = (): JSX.Element => { //?
           onChange={handleChangeOneSkill}
         >
           <option>Я владею элементом...</option>
-          {filters.map((item: any) =>
+          {filters.map((item) =>
             <option value={item} key={uuidv4()}>
               {mappedSkils[item]}
             </option>
